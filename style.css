@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  background-image: radial-gradient( circle 343px at 46.3% 47.5%,  rgba(242,242,242,1) 0%, rgba(241,241,241,1) 72.9% );
+}
+.wrapper {
+  --button-width: 115px;
+  --button-height: 90px;
+  display: grid;
+  grid-template-areas:
+    "result result result result record"
+    "percent  ac delete divide record"
+    "number-7 number-8 number-9 multiple record"
+    "number-4 number-5 number-6 minus record"
+    "number-1 number-2 number-3 plus record"
+    "plus-minus number-0 dot equal record";
+  grid-template-columns: repeat(6,var(--button-width));
+  grid-template-rows: repeat(6,var(--button-height));
+  border: 1px solid #000;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px
+}
+.wrapper button{
+  display: block;
+  font-size: 24px;
+  font-style: Helvetica;
+  color: #000;
+  border: 1px solid #aaa;
+  background-color: #fff
+}
+.wrapper button:hover{
+  background-color: #ccc;
+  
+}
+.wrapper button:active{
+  background-color: #aaa;
+}
+.result{
+  font-size: 36px;
+  color: #121;
+}
+.record{
+  font-size: 30px;
+}
