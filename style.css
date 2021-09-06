@@ -10,12 +10,12 @@ body {
   --button-height: 90px;
   display: grid;
   grid-template-areas:
-    "result result result result record"
-    "percent  ac delete divide record"
-    "number-7 number-8 number-9 multiple record"
-    "number-4 number-5 number-6 minus record"
-    "number-1 number-2 number-3 plus record"
-    "plus-minus number-0 dot equal record";
+    "result result result result record record"
+    "percent  ac delete divide record record"
+    "number-7 number-8 number-9 multiple record record"
+    "number-4 number-5 number-6 minus record record"
+    "number-1 number-2 number-3 plus record record"
+    "plus-minus number-0 dot equal record record";
   grid-template-columns: repeat(6,var(--button-width));
   grid-template-rows: repeat(6,var(--button-height));
   border: 1px solid #000;
@@ -41,7 +41,52 @@ body {
 .result{
   font-size: 36px;
   color: #121;
+  overflow: hidden;
+}
+.record .title{
+  text-align: center;
+  justify-content: center;
+  display:block;
+  font-size: 24px;
+  padding-bottom: 25px
+}
+.record .history{
+  color: #bab;
+  font-size: 20px;
+  height: 50px;
+  width: 80%;
+  padding: 10px 0 0 10px;
+  display: inline-block;
+  float: left;
+  overflow: auto;
+/*   clear:both */
+}
+.record .delete-history{
+  clear:both;
+  display: inline;
+  float: right;
+  height: 23px;
+  font-size: 5px;
+  border-radius: 50%;
+  position: relative;
+  right: 10px;
+  top: 14px;
+  vertical-align:middle;
+  text-align: center; 
 }
 .record{
-  font-size: 30px;
+  position:relative;
+}
+.record .empty{
+  height: 50px;
+  width: 80px;
+  background-color: #e11;
+  color: #eee;
+  position:absolute;
+  top: 490px;
+  left: 77px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 45px;
+  font-size: 20px;
 }

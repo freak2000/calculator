@@ -2,6 +2,9 @@ $(function(){
   var isDecimalAdd = false
   var isOperatorAdd = false
   var isNumberAdd = 0
+  function roundFun(value, n) {
+    return Math.round(value*Math.pow(10,n))/Math.pow(10,n);
+  }
   $(".number").click(function(){
     if(($(".result").text()[$(".result").text().length-1])=='0' && $(".result").text().length == 1){
       $(".result").text('')
@@ -17,7 +20,6 @@ $(function(){
     if(isNumberAdd<=0) {
       isDecimalAdd = false
     }
-    // isDecimalAdd = false
   })
   $(".operator").click(function(){
     if(!isOperatorAdd) {
@@ -48,10 +50,18 @@ $(function(){
     isDecimalAdd = false
     isNumberAdd = 0
     var formula = $(".result").text()
+    var historyItem=$("<div></div>").text(formula).addClass("history")
+    var deleteHistoryItem=$("<button></button>").text('✘').addClass("delete-history")    
+    $(".title").after(historyItem).after(deleteHistoryItem)
     formula=formula.replace(/×/g,'*')
     formula=formula.replace(/÷/g,'/')
     formula=formula.replace(/π/g,'Math.PI')
-    $(".result").text(eval(formula)) 
+    $(".result").text(roundFun(eval(formula),6)) 
+    historyItem.append('='+roundFun(eval(formula),6))
+    if($(".record").children(".history").length>7){
+      $(".record button").eq(-2).remove()
+      $(".record div").last().remove()
+    }
   })
   $(".delete").click(function(){
     if($(".result").text().length>1) {
@@ -63,5 +73,18 @@ $(function(){
       $(".result").text('0')
     }
   })
+  $(".record").on("click",".history",function(){
+    var str = $(this).text()
+    var index = str.indexOf("=")
+    str = str.substr(index + 1,str.length)
+    $(".result").text(str)
+  })
+  $(".record").on("click",".delete-history",function(){
+    $(this).next("div").remove()
+    $(this).remove()
+  })
+  $(".empty").click(function(){
+    $("div").remove(".history")
+    $("button").remove(".delete-history")
+  })
 })
-
