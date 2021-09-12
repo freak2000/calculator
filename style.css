@@ -8,7 +8,9 @@ body {
 .wrapper {
   --button-width: 115px;
   --button-height: 90px;
+  /* 栅格布局 */
   display: grid;
+  /* 每一个区域对应的按钮 */
   grid-template-areas:
     "result result result result record record"
     "percent  ac delete divide record record"
@@ -16,6 +18,7 @@ body {
     "number-4 number-5 number-6 minus record record"
     "number-1 number-2 number-3 plus record record"
     "plus-minus number-0 dot equal record record";
+  /* 指定六行六列 */
   grid-template-columns: repeat(6,var(--button-width));
   grid-template-rows: repeat(6,var(--button-height));
   border: 1px solid #000;
